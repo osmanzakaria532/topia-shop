@@ -1,11 +1,11 @@
-import React from "react";
 import {
-  FaTiktok,
-  FaInstagram,
   FaFacebook,
+  FaInstagram,
   FaPinterest,
+  FaTiktok,
   FaYoutube,
 } from "react-icons/fa";
+import { Link } from "react-router";
 
 const links = {
   "About Us": [
@@ -89,7 +89,9 @@ const Footer = () => {
               </a>
             ))}
           </div>
-          <p>terms & conditions with privacy policy</p>
+          <p>
+            <Link to="/terms">terms</Link> & conditions with privacy policy
+          </p>
         </div>
       </div>
     </footer>

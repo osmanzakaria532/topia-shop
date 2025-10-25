@@ -4,10 +4,11 @@ import { use, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router";
 import { AuthContext } from "../Provider/AuthProvider";
 import { toast } from "react-toastify";
+import { FaGoogle } from "react-icons/fa";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
-  const { signIn } = use(AuthContext);
+  const { signIn, signInWithGoogle } = use(AuthContext);
   const location = useLocation();
   const navigate = useNavigate();
   //   console.log({ location, navigate });
@@ -16,17 +17,30 @@ const Login = () => {
     e.preventDefault();
     const email = e.target.email.value;
     const password = e.target.password.value;
+    // console.log({ email, password });
 
-    console.log({ email, password });
     signIn(email, password)
       .then((res) => {
-        console.log(res.user);
+        // console.log(res.user);
         toast.success("Login successful!");
         navigate(location?.state ? location.state : "/");
       })
       .catch((err) => {
-        console.log(err);
+        // console.log(err);
         toast.error("Login failed!");
+      });
+  };
+
+  const handleSignInWithGoogle = (e) => {
+    e.preventDefault();
+    // Implement Google Sign-In logic here
+    signInWithGoogle()
+      .then((res) => {
+        console.log(res);
+        navigate(location?.state ? location.state : "/");
+      })
+      .catch((error) => {
+        console.log("Error during Google Sign-In:", error);
       });
   };
 
@@ -95,12 +109,13 @@ const Login = () => {
           </div>
 
           <div className="text-sm">
-            <button
+            <Link
+              to="/reset-password"
               type="button"
               className="text-[#02B290] hover:underline"
             >
               Forgot password?
-            </button>
+            </Link>
           </div>
 
           <button
@@ -108,6 +123,20 @@ const Login = () => {
             className="mt-2 w-full rounded-xl bg-[#02B290] py-3 font-semibold text-white shadow hover:bg-[#018e72] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#02B290]"
           >
             Log In
+          </button>
+
+          <div className="flex items-center">
+            <div className="grow border-t border-gray-300"></div>
+            <span className="mx-3 text-gray-500 font-medium">OR</span>
+            <div className="grow border-t border-gray-300"></div>
+          </div>
+          <button
+            onClick={handleSignInWithGoogle}
+            type="submit"
+            className="mt-2 w-full rounded-xl bg-[#4285F4] py-3 font-semibold text-white shadow hover:bg-[#3367D6] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#4285F4] disabled:opacity-60 transition duration-300"
+          >
+            <FaGoogle className="inline mr-2 text-white text-lg" />
+            Create account with Google
           </button>
 
           <div className="pt-5 text-center">

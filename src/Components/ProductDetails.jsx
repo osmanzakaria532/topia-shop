@@ -22,7 +22,7 @@ const ProductDetails = () => {
   const { id } = useParams();
 
   const productDetails = data.find((p) => p.Id === parseInt(id));
-  console.log(productDetails);
+  // console.log(productDetails);
 
   return (
     <div>

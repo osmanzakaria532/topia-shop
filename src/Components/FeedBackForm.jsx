@@ -7,7 +7,7 @@ const FeedBackForm = () => {
     const email = e.target.email.value;
     const message = e.target.message.value;
 
-    console.log({ name, email, message });
+    // console.log({ name, email, message });
 
     e.target.reset();
     toast.success("Feedback submitted successfully!");

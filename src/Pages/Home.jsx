@@ -1,7 +1,7 @@
-import React from "react";
-import Slider from "../Components/Slider";
-import PopularProducts from "../Components/PopularProducts";
 import { useLoaderData } from "react-router";
+import Gallery from "../Components/Gallery";
+import PopularProducts from "../Components/PopularProducts";
+import Slider from "../Components/Slider";
 
 const Home = () => {
   const products = useLoaderData();
@@ -10,6 +10,7 @@ const Home = () => {
     <>
       <Slider />
       <PopularProducts products={products} />
+      <Gallery images={products} />
     </>
   );
 };

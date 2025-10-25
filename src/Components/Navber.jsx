@@ -1,6 +1,7 @@
 import { Menu, X } from "lucide-react";
 import { use, useState } from "react";
 import { Link, NavLink } from "react-router";
+import { toast } from "react-toastify";
 import { auth } from "../firebase/firebase.config";
 import { AuthContext } from "../Provider/AuthProvider";
 import Container from "./ui_layout/Container";
@@ -13,7 +14,8 @@ const Navbar = () => {
   const handleLogOut = () => {
     logOut(auth)
       .then(() => {
-        console.log("User logged out");
+        // console.log("User logged out");
+        toast.success("Logged out successfully!");
       })
       .catch((error) => {
         console.error("Error logging out:", error);

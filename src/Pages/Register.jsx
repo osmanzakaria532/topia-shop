@@ -10,7 +10,7 @@ const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [errors, setErrors] = useState({});
   const navigate = useNavigate();
-  console.log({ navigate });
+  // console.log({ navigate });
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -19,13 +19,13 @@ const Register = () => {
     const email = e.target.email.value;
     const password = e.target.password.value;
 
-    console.log({ name, photo, email, password });
+    // console.log({ name, photo, email, password });
 
     createUser(email, password)
       .then((res) => {
         updateUser({ displayName: name, photoURL: photo })
           .then(() => {
-            console.log("User profile updated");
+            // console.log("User profile updated");
             setUser({ ...res.user, displayName: name, photoURL: photo });
             toast.success("User created successfully!");
             navigate("/login");
@@ -35,7 +35,7 @@ const Register = () => {
           });
       })
       .catch((err) => {
-        console.log(err);
+        // console.log(err);
         toast.error("User creation failed!");
       });
   };
