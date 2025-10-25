@@ -9,7 +9,7 @@ import Products from "../Pages/Products";
 import Profile from "../Pages/Profile";
 import Register from "../Pages/Register";
 import PrivateRoute from "../Provider/PrivateRoute";
-import RootLayout from "../rootLayout/RootLayout";
+import RootLayout from "../RootLayout/RootLayout";
 
 const router = createBrowserRouter([
   {
